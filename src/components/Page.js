@@ -29,6 +29,10 @@ const Button = styled.div`
   &:hover {
     background: ${colors.blue};
   }
+
+  &:active {
+      background: ${colors.darkBlue}
+  }
 `
 
 const Wrapper = styled.div`

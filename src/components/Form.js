@@ -53,6 +53,10 @@ const SubmitButton = styled.div`
   &:hover {
     background: ${colors.blue};
   }
+
+  &:active {
+      background: ${colors.darkBlue}
+  }
 `
 class Form extends Component {
   state = {

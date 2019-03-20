@@ -18,6 +18,7 @@ const CardPaneWrapper = styled.div`
 `
 
 class CardsPanel extends React.Component {
+  
   renderElement = (objectData, index) => {
     const { displayMode } = this.props
     return displayMode === 'panes' ? (
