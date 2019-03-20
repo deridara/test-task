@@ -1,8 +1,4 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
 Only development mode avalible.
-Clone directory and run
-
-### `npm start`
+Clone directory and run `npm start`
