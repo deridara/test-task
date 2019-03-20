@@ -6,8 +6,26 @@ const FomWrapper = styled.div`
   width: 100%;
   margin: 15px 0 0;
 `
-const LabelText = styled.label`
-  display: block;
+
+const Fieldset = styled.fieldset`
+  padding: 0 25px 15px;
+`
+
+const Legend = styled.legend`
+  margin: 0 0 15px;
+  font-size: 1.5em;
+  font-weight: 400;
+`
+
+const Label = styled.label`
+  display: inline-block;
+  margin: 0 20px 5px 0;
+  width: 24%;
+  min-width: 300px;
+`
+
+const LabelText = styled.div`
+  display: inline-block;
   margin: 0 0 10px;
 `
 
@@ -20,26 +38,16 @@ const Input = styled.input`
   padding: 0 10px;
 `
 
-const Legend = styled.legend`
-  margin: 0 0 15px;
-  font-size: 1.5em;
-  font-weight: 400;
-`
-
-const Fieldset = styled.fieldset`
-  padding: 0 25px 15px;
-`
-
 const SubmitButton = styled.div`
-  width: 250px;
-  height: 50px;
+  display: inline-block;
+  width: 275px;
+  height: 40px;
   color: white;
   background: ${colors.lightBlue};
   border-radius: 3px;
-  display: inline-block;
   box-sizing: border-box;
   text-align: center;
-  line-height: 50px;
+  line-height: 40px;
   cursor: pointer;
 
   &:hover {
@@ -48,9 +56,9 @@ const SubmitButton = styled.div`
 `
 class Form extends Component {
   state = {
-    title: 'Заголовок 7',
+    title: 'Заголовок',
     attributes: 2,
-    description: 'Описание 7 объекта',
+    description: 'Описание объекта',
   }
   handleSubmit = e => {
     e.preventDefault()
@@ -67,16 +75,16 @@ class Form extends Component {
         <form>
           <Fieldset>
             <Legend>Добавить новый объект</Legend>
-            <label name="title">
+            <Label name="title">
               <LabelText>Заголовок</LabelText>
               <Input
                 type="text"
                 placeholder={this.state.title}
                 onChange={this.handleChange}
               />
-            </label>
+            </Label>
 
-            <label name="attributes">
+            <Label name="attributes">
               <LabelText>Количество пунктов</LabelText>
               <Input
                 name="attributes"
@@ -84,9 +92,9 @@ class Form extends Component {
                 placeholder={this.state.attributes}
                 onChange={this.handleChange}
               />
-            </label>
+            </Label>
 
-            <label name="description">
+            <Label name="description">
               <LabelText>Описание</LabelText>
               <Input
                 name="description"
@@ -94,8 +102,10 @@ class Form extends Component {
                 placeholder={this.state.description}
                 onChange={this.handleChange}
               />
-            </label>
-            <SubmitButton type="submit" onClick={this.handleSubmit}>Добавить</SubmitButton>
+            </Label>
+            <SubmitButton type="submit" onClick={this.handleSubmit}>
+              Добавить
+            </SubmitButton>
           </Fieldset>
         </form>
       </FomWrapper>
