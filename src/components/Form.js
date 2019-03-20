@@ -18,29 +18,33 @@ const Legend = styled.legend`
 `
 
 const Label = styled.label`
-  display: inline-block;
+  display: block;
   margin: 0 20px 5px 0;
-  width: 24%;
-  min-width: 300px;
 `
 
 const LabelText = styled.div`
   display: inline-block;
   margin: 0 0 10px;
+
+  &::after {
+    ${props => props.required && 'content: " *"; color: red;'}
+  }
 `
 
 const Input = styled.input`
   display: block;
   margin: 0 0 15px;
+  width: 100%;
   height: 35px;
-  width: 250px;
   font-size: 1em;
   padding: 0 10px;
+  box-shadow: ${props =>
+    console.log(props) || (props.error && '0 0 3px 3px red')};
 `
 
 const SubmitButton = styled.div`
   display: inline-block;
-  width: 275px;
+  width: 200px;
   height: 40px;
   color: white;
   background: ${colors.lightBlue};
@@ -55,7 +59,7 @@ const SubmitButton = styled.div`
   }
 
   &:active {
-      background: ${colors.darkBlue}
+    background: ${colors.darkBlue};
   }
 `
 class Form extends Component {
@@ -64,9 +68,10 @@ class Form extends Component {
     attributes: 2,
     description: 'Описание объекта',
   }
+
   handleSubmit = e => {
     e.preventDefault()
-    this.props.onSubmit(this.state)
+    if (this.state.title) this.props.onSubmit(this.state)
   }
 
   handleChange = event => {
@@ -80,11 +85,13 @@ class Form extends Component {
           <Fieldset>
             <Legend>Добавить новый объект</Legend>
             <Label name="title">
-              <LabelText>Заголовок</LabelText>
+              <LabelText required>Заголовок</LabelText>
               <Input
+                name="title"
                 type="text"
                 placeholder={this.state.title}
                 onChange={this.handleChange}
+                error={!this.state.title}
               />
             </Label>
 
