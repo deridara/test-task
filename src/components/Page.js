@@ -68,7 +68,7 @@ class Page extends Component {
   }
 
   addToTopHandler = () => {
-      console.log('addToTopHandler')
+    console.log('addToTopHandler')
     const { data } = this.state
     const l = data.length
     this.setState({ data: [data[l - 1], ...data] })
@@ -94,9 +94,9 @@ class Page extends Component {
     this.setState({ data })
   }
 
-  toggleCardsDisplay = e => {
-    if (e.target.checked) this.setState({ displayMode: 'cards' })
-    else this.setState({ displayMode: 'panes' })
+  toggleCardsDisplay = (e) => {
+    console.log('toggled', e.target.value)
+    this.setState({ displayMode: e.target.value })
   }
 
   renderNavigationRow = () => {
@@ -104,7 +104,26 @@ class Page extends Component {
       <NavigationRow>
         <Header>Список объектов</Header>
         <Switcher>
-            <input type="checkbox" onChange={this.toggleCardsDisplay} />
+          <label>
+            <input
+              name="displayMode"
+              type="radio"
+              value='cards'
+              onChange={this.toggleCardsDisplay}
+              checked={this.state.displayMode === 'cards'}
+            /> Карточки
+          </label>
+          <br />
+
+          <label>
+            <input
+              name="displayMode"
+              type="radio"
+              onChange={this.toggleCardsDisplay}
+              value='panes'
+              checked={this.state.displayMode === 'panes'}
+            /> Список
+          </label>
         </Switcher>
       </NavigationRow>
     )
@@ -137,7 +156,7 @@ class Page extends Component {
     const { data } = this.state
     let attributes = []
     for (let i = 0; i < attrAmount; i++) {
-      attributes.push(`Пункт ${data.length + 1}.${i+1}`)
+      attributes.push(`Пункт ${data.length + 1}.${i + 1}`)
     }
     const newCard = {
       title,
