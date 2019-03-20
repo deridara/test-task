@@ -14,30 +14,33 @@ const CardWrapper = styled.div`
   box-sizing: border-box;
   width: 100%;
   position: relative;
-`
-
-const HeaderBlock = styled.div`
-  border-bottom: 1px solid ${colors.grey};
-`
-
-const DescriptionBlock = styled.div`
+  padding: 5px 10px;
 `
 
 const Index = styled.div`
   color: ${colors.blue};
   position: absolute;
-  right: 15px;
-  top: 0;
+  right: 20px;
+  top: 20px;
 `
 
 const Title = styled.div`
+  padding: 15px 5px;
+  border-bottom: 1px solid ${colors.grey};
 `
 
 const Attributes = styled.div`
   border-bottom: 1px solid ${colors.grey};
+  padding: 10px 0 10px 20px;
 `
 
-const Attribute = styled.div``
+const Attribute = styled.div`
+margin: 5px 0;
+`
+
+const DescriptionBlock = styled.div`
+  padding: 15px 5px;
+`
 
 class Card extends Component {
   renderAttributes = attributes => {
@@ -49,10 +52,8 @@ class Card extends Component {
     return (
       <FlexWrapper>
         <CardWrapper>
-          <HeaderBlock>
-            <Title>{title}</Title>
-            <Index>{index + 1}</Index>
-          </HeaderBlock>
+          <Title>{title}</Title>
+          <Index>{index + 1}</Index>
           <Attributes>{this.renderAttributes(attributes)}</Attributes>
           <DescriptionBlock>{description}</DescriptionBlock>
         </CardWrapper>

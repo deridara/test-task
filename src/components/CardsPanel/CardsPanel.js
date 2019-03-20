@@ -21,14 +21,13 @@ class CardsPanel extends React.Component {
   renderElement = (objectData, index) => {
     const { displayMode } = this.props
     return displayMode === 'panes' ? (
-      <Pane data={objectData} index={index} />
+      <Pane data={objectData} index={index} key={index}/>
     ) : (
-      <Card data={objectData} index={index} />
+      <Card data={objectData} index={index} key={index}/>
     )
   }
 
   render() {
-    console.log(this.props)
     const { displayMode, data } = this.props
     return (
       <CardPaneWrapper displayMode={displayMode}>
